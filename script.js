@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- DATA ---
     const products = [
-        { name: 'Hybrid Seeds', description: 'High-yield, disease-resistant hybrid seeds for optimal crop production.', image: '../image/hybrid-seeds.jpg' },
-        { name: 'Local Seeds', description: 'Authentic, locally-sourced seeds adapted to regional climate and soil conditions.', image: '../image/local-seeds.jpg' },
-        { name: 'Organic Fertilizers', description: 'Eco-friendly fertilizers to enrich soil health and promote sustainable farming.', image: '../image/organic-fertilizer.jpg' },
-        { name: 'Chemical Fertilizers', description: 'Scientifically formulated fertilizers for targeted nutrient management and growth.', image: '../image/chemical-fertilizer.jpg' },
-        { name: 'Pesticides & Fungicides', description: 'Effective solutions to protect crops from pests, insects, and fungal diseases.', image: '../image/pesticides.jpg' },
-        { name: 'Modern Farming Tools', description: 'A range of efficient, modern equipment to streamline farming operations.', image: '../image/farming-tools.jpg' },
+      { imgSrc: "image/PRODUCT1.jpg", alt: "Hybrid Seeds", title: "HYBRID SEEDS", description: "High-yielding hybrid seeds for superior crop performance and disease resistance." },
+      { imgSrc: "image/PRODUCT6.JPG", alt: "Local Seeds", title: "LOCAL SEEDS", description: "Authentic local seeds, perfectly adapted to regional climate and soil conditions for robust growth." },
+      { imgSrc: "image/PRODUCT2.jpg", alt: "Organic Fertilizers", title: "ORGANIC FERTILIZERS", description: "Nourish your soil with our premium organic fertilizers, promoting healthy and sustainable growth." },
+      { imgSrc: "image/PRODUCT3.jpg", alt: "Liquid Fertilizers", title: "LIQUID FERTILIZERS", description: "Fast-acting liquid fertilizers for quick nutrient absorption and vibrant plant development." },
+      { imgSrc: "image/PRODUCT4.jpg", alt: "Chemical Fertilizers", title: "CHEMICAL FERTILIZERS", description: "Balanced chemical fertilizers designed for optimal growth and maximum crop yield." },
+      { imgSrc: "image/PRODUCT5.jpg", alt: "Equipments", title: "EQUIPMENTS", description: "Durable and efficient agricultural equipment to streamline your farming operations." }
     ];
 
     const services = [
