@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- DATA ---
     const products = [
-        { name: 'Hybrid Seeds', description: 'High-yield, disease-resistant hybrid seeds for optimal crop production.', image: 'image/hybrid-seeds.jpg' },
-        { name: 'Local Seeds', description: 'Authentic, locally-sourced seeds adapted to regional climate and soil conditions.', image: 'image/local-seeds.jpg' },
-        { name: 'Organic Fertilizers', description: 'Eco-friendly fertilizers to enrich soil health and promote sustainable farming.', image: 'image/organic-fertilizer.jpg' },
-        { name: 'Chemical Fertilizers', description: 'Scientifically formulated fertilizers for targeted nutrient management and growth.', image: 'image/chemical-fertilizer.jpg' },
-        { name: 'Pesticides & Fungicides', description: 'Effective solutions to protect crops from pests, insects, and fungal diseases.', image: 'image/pesticides.jpg' },
-        { name: 'Modern Farming Tools', description: 'A range of efficient, modern equipment to streamline farming operations.', image: 'image/farming-tools.jpg' },
+        { name: 'Hybrid Seeds', description: 'High-yield, disease-resistant hybrid seeds for optimal crop production.', image: '../image/hybrid-seeds.jpg' },
+        { name: 'Local Seeds', description: 'Authentic, locally-sourced seeds adapted to regional climate and soil conditions.', image: '../image/local-seeds.jpg' },
+        { name: 'Organic Fertilizers', description: 'Eco-friendly fertilizers to enrich soil health and promote sustainable farming.', image: '../image/organic-fertilizer.jpg' },
+        { name: 'Chemical Fertilizers', description: 'Scientifically formulated fertilizers for targeted nutrient management and growth.', image: '../image/chemical-fertilizer.jpg' },
+        { name: 'Pesticides & Fungicides', description: 'Effective solutions to protect crops from pests, insects, and fungal diseases.', image: '../image/pesticides.jpg' },
+        { name: 'Modern Farming Tools', description: 'A range of efficient, modern equipment to streamline farming operations.', image: '../image/farming-tools.jpg' },
     ];
 
     const services = [
