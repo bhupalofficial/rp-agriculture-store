@@ -196,8 +196,7 @@ img {
     transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out;
     background-color: transparent;
 }
-#navigation-bar.scrolled,
-#navigation-bar.nav-solid {
+#navigation-bar.scrolled {
     background-color: var(--nav-scroll-bg);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -221,8 +220,7 @@ img {
     letter-spacing: 1px;
     margin: 0;
 }
-#navigation-bar.scrolled .nav-logo h1,
-#navigation-bar.nav-solid .nav-logo h1 {
+#navigation-bar.scrolled .nav-logo h1 {
     color: var(--text-primary);
     text-shadow: none;
 }
@@ -246,8 +244,7 @@ img {
     transition: color 0.3s ease;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
-#navigation-bar.scrolled .nav-links a,
-#navigation-bar.nav-solid .nav-links a {
+#navigation-bar.scrolled .nav-links a {
     color: var(--text-primary);
     text-shadow: none;
 }
@@ -301,7 +298,6 @@ img {
     box-shadow: 0 0 0 2px var(--accent-color);
     border-color: var(--accent-color) !important;
     background-color: var(--bg-secondary);
-    color: var(--text-primary);
 }
 .search-form button {
     background: rgba(255, 255, 255, 0.2);
@@ -320,23 +316,19 @@ img {
 .search-form button:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
-#navigation-bar.scrolled .search-form input,
-#navigation-bar.nav-solid .search-form input {
+#navigation-bar.scrolled .search-form input {
     background-color: var(--bg-tertiary);
     border-color: var(--border-color);
     color: var(--text-primary);
 }
-#navigation-bar.scrolled .search-form input::placeholder,
-#navigation-bar.nav-solid .search-form input::placeholder {
+#navigation-bar.scrolled .search-form input::placeholder {
     color: var(--text-secondary);
 }
-#navigation-bar.scrolled .search-form button,
-#navigation-bar.nav-solid .search-form button {
+#navigation-bar.scrolled .search-form button {
     background-color: var(--bg-tertiary);
     color: var(--text-secondary);
 }
-#navigation-bar.scrolled .search-form button:hover,
-#navigation-bar.nav-solid .search-form button:hover {
+#navigation-bar.scrolled .search-form button:hover {
     background-color: var(--border-color);
 }
 .search-form svg {
@@ -353,12 +345,11 @@ img {
     padding: 8px;
     margin-right: -8px;
 }
-#navigation-bar:not(.scrolled):not(.nav-solid) .menu-toggle svg {
+#navigation-bar:not(.scrolled) .menu-toggle svg {
     color: var(--hero-text);
     filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5));
 }
-#navigation-bar.scrolled .menu-toggle svg,
-#navigation-bar.nav-solid .menu-toggle svg {
+#navigation-bar.scrolled .menu-toggle svg {
     color: var(--text-primary);
 }
 .menu-toggle svg {
@@ -451,12 +442,8 @@ img {
     transition: background-color 0.3s ease;
     line-height: 0;
 }
-#navigation-bar:not(.scrolled):not(.nav-solid) .theme-switcher button {
+#navigation-bar:not(.scrolled) .theme-switcher button {
     color: var(--hero-text);
-}
-#navigation-bar.scrolled .theme-switcher button,
-#navigation-bar.nav-solid .theme-switcher button {
-    color: var(--text-primary);
 }
 .theme-switcher button:hover {
     background-color: rgba(128, 128, 128, 0.2);
@@ -887,8 +874,6 @@ img {
     width: 100%;
     height: 100%;
     border: 0;
-    transition: filter 0.3s ease;
-    filter: invert(var(--invert-level));
 }
 .form-success-message {
     display: flex;
@@ -1516,33 +1501,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const getSystemTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
         const applyTheme = (theme) => {
-            let resolvedTheme = theme;
-            if (theme === 'system') {
-                resolvedTheme = getSystemTheme();
-            }
-            document.documentElement.setAttribute('data-theme', resolvedTheme);
+            document.documentElement.setAttribute('data-theme', theme);
             if (themeToggleButton) {
-                themeToggleButton.innerHTML = resolvedTheme === 'dark' ? moonIcon : sunIcon;
+                themeToggleButton.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
             }
         };
 
-        let currentTheme = localStorage.getItem('theme') || 'system';
+        let currentTheme = localStorage.getItem('theme') || getSystemTheme();
         applyTheme(currentTheme);
 
         themeToggleButton.addEventListener('click', () => {
-            if (currentTheme === 'light') {
-                currentTheme = 'dark';
-            } else if (currentTheme === 'dark') {
-                currentTheme = 'system';
-            } else {
-                currentTheme = 'light';
-            }
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
             localStorage.setItem('theme', currentTheme);
             applyTheme(currentTheme);
         });
         
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-            if (currentTheme === 'system') applyTheme('system');
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme);
+            }
         });
     }
 
@@ -1557,12 +1535,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (show) {
             mainContent.style.display = 'none';
             privacySection.style.display = 'block';
-            navBar.classList.add('nav-solid');
             window.scrollTo(0, 0);
         } else {
             mainContent.style.display = 'block';
             privacySection.style.display = 'none';
-            navBar.classList.remove('nav-solid');
         }
     };
 
